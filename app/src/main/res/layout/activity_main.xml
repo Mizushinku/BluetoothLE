@@ -4,15 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     tools:context=".MainActivity">
 
     <ImageButton
         android:id="@+id/bt_btn"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="56dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="92dp"
+        app:layout_constraintStart_toEndOf="@+id/bleMessage"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/bleMessage"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/semip"
+        android:textColor="@color/goldenrod"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_PREV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="196dp"
+        android:text="PREV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bleMessage" />
+
+    <Button
+        android:id="@+id/btn_OFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="228dp"
+        android:text="OFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bleMessage" />
 
 </android.support.constraint.ConstraintLayout>
