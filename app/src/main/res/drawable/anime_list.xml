@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:andrroid="http://schemas.android.com/apk/res/android"
+    andrroid:oneshot="false">
+
+    <item andrroid:drawable="@drawable/end0" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end1" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end2" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end3" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end4" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end5" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end6" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end7" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end8" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end9" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end10" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end11" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end12" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end13" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end14" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end15" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end16" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end17" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end18" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end19" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end20" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end21" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end22" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end23" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end24" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end25" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end26" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end27" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end28" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end29" andrroid:duration="100"/>
+    <item andrroid:drawable="@drawable/end30" andrroid:duration="300"/>
+
+</animation-list>

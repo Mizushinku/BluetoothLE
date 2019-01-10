@@ -20,19 +20,23 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Build;
 import android.os.Handler;
 import android.os.ParcelUuid;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,11 +64,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Handler mHandler = new Handler();
 
     private ImageButton bt_btn;
+    private ScrollView bleMsgScrollView;
     private TextView bleMessage;
-    private Button btn_PREV, btn_OFF;
+    private ImageButton btn_PREV, btn_NEXT, btn_VDOWN, btn_VUP, btn_OFF;
     private ListView leDeviceListView;
     private LeDeviceListAdapter mLeDeviceListAdapter;
     private AlertDialog alertDialog;
+    private ImageView animeView;
+    private AnimationDrawable animationDrawable;
 
     private static int scancnt = 0;
     private static boolean isconnected = false;
@@ -84,12 +91,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_btn.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ble_disconnect));
         bt_btn.setOnClickListener(this);
 
+        bleMsgScrollView = findViewById(R.id.bleMsgScrollView);
         bleMessage = findViewById(R.id.bleMessage);
+        bleMessage.setMovementMethod(ScrollingMovementMethod.getInstance());
+        bleMsgScrollView.setSmoothScrollingEnabled(true);
 
         btn_PREV = findViewById(R.id.btn_PREV);
         btn_PREV.setOnClickListener(this);
+        btn_NEXT = findViewById(R.id.btn_NEXT);
+        btn_NEXT.setOnClickListener(this);
+        btn_VDOWN = findViewById(R.id.btn_VDOWN);
+        btn_VDOWN.setOnClickListener(this);
+        btn_VUP = findViewById(R.id.btn_VUP);
+        btn_VUP.setOnClickListener(this);
         btn_OFF = findViewById(R.id.btn_OFF);
         btn_OFF.setOnClickListener(this);
+
 
         final BluetoothManager bluetoothManager =
                 (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
@@ -129,6 +146,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 connectToDevice(device);
             }
         });
+
+        animeView = findViewById(R.id.animeView);
+        animeView.setBackgroundResource(R.drawable.anime_list);
     }
 
     @Override
@@ -146,6 +166,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         } else if(v == btn_PREV) {
             sendTx("1");
+        } else if(v == btn_NEXT) {
+            sendTx("2");
+        } else if(v == btn_VDOWN) {
+            sendTx("3");
+        } else if(v == btn_VUP) {
+            sendTx("4");
         } else if(v == btn_OFF) {
             sendTx("5");
         }
@@ -161,6 +187,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     .build();
             filters = new ArrayList<>();
         }
+        animationDrawable = (AnimationDrawable)animeView.getBackground();
+        animationDrawable.start();
     }
 
     @Override
@@ -181,6 +209,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(mGatt != null) {
             mGatt.disconnect();
             mGatt.close();
+            print("GATT closed");
             mGatt = null;
             tx = null;
             isconnected = false;
@@ -255,6 +284,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         public void onScanResult(int callbackType, ScanResult result) {
             super.onScanResult(callbackType, result);
             final BluetoothDevice device = result.getDevice();
+            /*
             if(result.getScanRecord() != null) {
                 List<ParcelUuid> parcelUuids = result.getScanRecord().getServiceUuids();
                 if(parcelUuids != null) {
@@ -263,12 +293,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             Log.d("BLE_Scan", "Find UART_UUID------- " + scancnt);
                             if(device.getName() != null) {
                                 ++scancnt;
-                                Log.d("BLE_Scan", device.getName() + "------- " + scancnt);
                             }
                         }
                     }
                 }
             }
+            */
 
             mLeDeviceListAdapter.addDevice(device);
             mLeDeviceListAdapter.notifyDataSetChanged();
@@ -293,8 +323,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                if(bleMsgScrollView == null || bleMessage == null) {
+                    return;
+                }
                 bleMessage.append(message);
                 bleMessage.append("\n");
+                /*
+                int offset = bleMessage.getMeasuredHeight() - bleMsgScrollView.getMeasuredHeight();
+                Log.d("OFFSET", "---- " + offset);
+                if(offset < 0) {
+                    offset = 0;
+                }
+                bleMsgScrollView.scrollTo(0, offset);
+                */
+                bleMsgScrollView.smoothScrollTo(0, bleMessage.getBottom());
             }
         });
     }

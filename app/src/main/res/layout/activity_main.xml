@@ -11,40 +11,118 @@
         android:id="@+id/bt_btn"
         android:layout_width="72dp"
         android:layout_height="72dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="92dp"
-        app:layout_constraintStart_toEndOf="@+id/bleMessage"
+        android:background="@color/transparent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.34"
+        app:layout_constraintStart_toEndOf="@+id/bleMsgScrollView"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/bleMessage"
+    <ScrollView
+        android:id="@+id/bleMsgScrollView"
         android:layout_width="220dp"
         android:layout_height="220dp"
+        android:background="@color/transparent"
         android:layout_marginStart="32dp"
         android:layout_marginTop="40dp"
-        android:background="@drawable/semip"
-        android:textColor="@color/goldenrod"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/btn_PREV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <TextView
+            android:id="@+id/bleMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/semip"
+            android:textColor="@color/goldenrod"
+            android:scrollbars="vertical"
+            android:scrollbarStyle="insideOverlay"
+            android:fadeScrollbars="false"/>
+
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/animeView"
+        android:layout_width="220dp"
+        android:layout_height="124dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="196dp"
-        android:text="PREV"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_PREV"
+        app:layout_constraintEnd_toStartOf="@+id/btn_VUP"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bleMessage" />
+        app:layout_constraintTop_toBottomOf="@+id/bleMsgScrollView"
+        app:layout_constraintVertical_bias="0.07999998" />
 
-    <Button
-        android:id="@+id/btn_OFF"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="228dp"
-        android:text="OFF"
+
+    <ImageButton
+        android:id="@+id/btn_VUP"
+        android:layout_width="100dp"
+        android:layout_height="83dp"
+        android:layout_marginTop="32dp"
+        android:background="@color/transparent"
+        android:src="@drawable/vup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bleMsgScrollView" />
+
+    <ImageButton
+        android:id="@+id/btn_VDOWN"
+        android:layout_width="100dp"
+        android:layout_height="83dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="64dp"
+        android:background="@color/transparent"
+        android:src="@drawable/vdown"
+        app:layout_constraintBottom_toTopOf="@+id/btn_NEXT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_VUP"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <ImageButton
+        android:id="@+id/btn_PREV"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="184dp"
+        android:layout_marginBottom="32dp"
+        android:src="@drawable/prev"
+        android:background="@color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bleMessage" />
+        app:layout_constraintTop_toBottomOf="@+id/bleMsgScrollView"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageButton
+        android:id="@+id/btn_NEXT"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="32dp"
+        android:background="@color/transparent"
+        android:src="@drawable/next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/btn_PREV"
+        app:layout_constraintTop_toBottomOf="@+id/bleMsgScrollView"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+    <ImageButton
+        android:id="@+id/btn_OFF"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/stop"
+        android:background="@color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.26"
+        app:layout_constraintStart_toEndOf="@+id/bleMsgScrollView"
+        app:layout_constraintTop_toBottomOf="@+id/bt_btn" />
 
 </android.support.constraint.ConstraintLayout>
